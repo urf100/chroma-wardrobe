@@ -88,6 +88,14 @@ Backups enthalten persönliche Daten. **Lege sie nicht ins Git-Repository** (die
 
 Ein Kamera- oder Fotoscan ist eine **Schätzung der wahrgenommenen Farbe**, keine farbmetrische Messung. Licht (warm/kalt), Schatten, Spiegelungen, Kamerasensor, automatischer Weißabgleich, Stoffstruktur sowie Über- und Unterbelichtung verändern das Ergebnis. Die App misst deshalb einen Bereich (getrimmter Mittelwert in linearem RGB), warnt bei Problemen und bietet einen Weißabgleich über eine neutrale Grau- oder Weißkarte. Der Kamerazugriff erfordert HTTPS oder `localhost`; der Foto-Upload funktioniert immer.
 
+## Online öffnen
+
+**https://urf100.github.io/chroma-wardrobe/**
+
+Die App wird bei jedem Push automatisch gebaut und über GitHub Pages veröffentlicht (`.github/workflows/deploy-pages.yml`). Einmalig muss dafür in den Repository-Einstellungen unter **Settings → Pages → Build and deployment → Source** die Option **„GitHub Actions“** gewählt werden.
+
+Der Quellcode ist öffentlich, persönliche Daten nicht: Sie bleiben im Browser des jeweiligen Geräts.
+
 ## Hosting
 
 Der Build in `dist/` ist rein statisch und kann auf jedem statischen Hoster liegen (GitHub Pages, Netlify, Cloudflare Pages …). Dank Hash-Routing und `base: './'` ist keine Server-Konfiguration nötig. Für den Kamerazugriff muss die Seite per HTTPS ausgeliefert werden.
