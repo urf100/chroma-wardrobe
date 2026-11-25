@@ -1,0 +1,26 @@
+# Abhängigkeiten & Builds
+node_modules/
+dist/
+dist-ssr/
+*.tsbuildinfo
+coverage/
+
+# Testartefakte
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# Editor / System
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.log
+*.local
+
+# Persönliche Daten dürfen niemals ins Repository gelangen
+backups/
+*.chromawardrobe.json
+chromawardrobe-backup-*.json
+personal-data/

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ChromaWardrobe – persönliche Farbberatung, Kleiderschrank und Outfit-Studio. Alle Daten bleiben lokal in deinem Browser." />
+    <meta name="theme-color" content="#f7f6f3" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#151516" media="(prefers-color-scheme: dark)" />
+    <title>ChromaWardrobe</title>
+    <script>
+      // Theme vor dem ersten Rendern setzen, um Aufblitzen zu vermeiden.
+      try {
+        var t = localStorage.getItem('cw-theme') || 'system';
+        var d = t === 'dark' || (t === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        if (d) document.documentElement.classList.add('dark');
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
