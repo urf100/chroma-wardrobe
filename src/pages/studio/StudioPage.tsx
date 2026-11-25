@@ -351,7 +351,7 @@ export default function StudioPage() {
                     <div className="flex items-center gap-3">
                       <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-stage p-1">
                         {v ? (
-                          <GarmentIllustration subcategory={v.subcategory} colors={v.colors} pattern={v.pattern} attributes={v.attributes} catalog={catalog} className={cx('h-full w-full', v.hidden && 'opacity-30')} />
+                          <GarmentIllustration decorative subcategory={v.subcategory} colors={v.colors} pattern={v.pattern} attributes={v.attributes} catalog={catalog} className={cx('h-full w-full', v.hidden && 'opacity-30')} />
                         ) : (
                           <span className="text-lg text-muted" aria-hidden>
                             +
@@ -501,7 +501,7 @@ export default function StudioPage() {
                     className="flex w-full flex-col rounded-2xl border border-line bg-surface p-2 text-left hover:bg-surface-2"
                   >
                     <span className="mb-2 flex aspect-square items-center justify-center rounded-xl bg-stage p-2">
-                      <GarmentIllustration subcategory={g.subcategory} colors={g.colors} pattern={g.pattern} attributes={g.attributes} catalog={catalog} className="h-full w-full" />
+                      <GarmentIllustration decorative subcategory={g.subcategory} colors={g.colors} pattern={g.pattern} attributes={g.attributes} catalog={catalog} className="h-full w-full" />
                     </span>
                     <span className="line-clamp-2 text-xs font-medium">{g.name}</span>
                     {g.ownership !== 'owned' && (
@@ -573,7 +573,7 @@ function FreeColorModal({
       <div className="grid gap-6 md:grid-cols-[180px_1fr]">
         <div className="space-y-3">
           <div className="flex aspect-square items-center justify-center rounded-2xl bg-stage p-3">
-            <GarmentIllustration subcategory={sub} colors={colors} pattern={{ type: pattern }} attributes={defaultAttributes(sub, catalog)} catalog={catalog} className="h-full w-full" />
+            <GarmentIllustration decorative subcategory={sub} colors={colors} pattern={{ type: pattern }} attributes={defaultAttributes(sub, catalog)} catalog={catalog} className="h-full w-full" />
           </div>
           <label className="block text-sm">
             <span className="mb-1 block font-medium">Art</span>

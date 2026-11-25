@@ -56,7 +56,7 @@ export function MatchList({
                 <li key={garment.id} className="rounded-xl border border-line">
                   <div className="flex items-center gap-3 p-2">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-stage p-1">
-                      <GarmentIllustration subcategory={garment.subcategory} colors={garment.colors} pattern={garment.pattern} attributes={garment.attributes} catalog={catalog} className="h-full w-full" />
+                      <GarmentIllustration decorative subcategory={garment.subcategory} colors={garment.colors} pattern={garment.pattern} attributes={garment.attributes} catalog={catalog} className="h-full w-full" />
                     </div>
                     <button type="button" className="min-w-0 flex-1 text-left" onClick={() => setExpanded(open ? null : key)} aria-expanded={open}>
                       <span className="block truncate text-sm font-medium">{garment.name}</span>

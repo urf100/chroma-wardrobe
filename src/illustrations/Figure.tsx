@@ -184,7 +184,9 @@ export function GarmentIllustration({
   open = false,
   className,
   title,
+  decorative = false,
 }: {
+  decorative?: boolean;
   subcategory: string;
   colors: GarmentColor[];
   pattern: GarmentPattern;
@@ -200,7 +202,12 @@ export function GarmentIllustration({
   const slot = sub?.slot ?? 'base';
   const [x, y, w, h] = thumbBox(silhouette, slot, attributes ?? {});
   return (
-    <svg viewBox={`${x} ${y} ${w} ${h}`} role="img" aria-label={title ?? sub?.label ?? 'Kleidungsstück'} className={className} xmlns="http://www.w3.org/2000/svg">
+    <svg
+      viewBox={`${x} ${y} ${w} ${h}`}
+      {...(decorative ? { 'aria-hidden': true } : { role: 'img', 'aria-label': title ?? sub?.label ?? 'Kleidungsstück' })}
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <ShadeDefs id={shadeId} />
       <GarmentLayer silhouette={silhouette} colors={colors} pattern={pattern} attributes={attributes} open={open} shadeId={shadeId} />
     </svg>

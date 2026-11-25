@@ -80,7 +80,7 @@ export default function WishlistPage() {
               <Card className={cx('h-full p-4', compare.includes(g.id) && 'border-ink')}>
                 <div className="flex gap-4">
                   <div className="flex h-28 w-28 shrink-0 items-center justify-center rounded-2xl bg-stage p-2">
-                    <GarmentThumb garment={g} catalog={catalog} className="h-full w-full" />
+                    <GarmentThumb decorative garment={g} catalog={catalog} className="h-full w-full" />
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="font-semibold">{g.name}</p>

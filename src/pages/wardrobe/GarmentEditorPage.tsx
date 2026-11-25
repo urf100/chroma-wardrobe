@@ -110,7 +110,7 @@ export default function GarmentEditorPage() {
         <PageHeader eyebrow="Gespeichert" title={saved.name} description="Diese vorhandenen Teile passen besonders gut dazu:" />
         <div className="grid gap-6 lg:grid-cols-[280px_1fr]">
           <div className="flex aspect-square items-center justify-center rounded-3xl bg-stage p-6">
-            <GarmentIllustration subcategory={saved.subcategory} colors={saved.colors} pattern={saved.pattern} attributes={saved.attributes} catalog={catalog} className="h-full w-full" />
+            <GarmentIllustration decorative subcategory={saved.subcategory} colors={saved.colors} pattern={saved.pattern} attributes={saved.attributes} catalog={catalog} className="h-full w-full" />
           </div>
           <div className="space-y-5">
             <MatchList anchor={saved} candidates={garments.filter((g) => g.id !== saved.id)} perRole={3} />
@@ -143,7 +143,7 @@ export default function GarmentEditorPage() {
   const preview = (
     <div className="space-y-3">
       <div className="flex aspect-square items-center justify-center rounded-3xl bg-stage p-6">
-        <GarmentIllustration subcategory={draft.subcategory} colors={draft.colors} pattern={draft.pattern} attributes={draft.attributes} catalog={catalog} className="h-full w-full" />
+        <GarmentIllustration decorative subcategory={draft.subcategory} colors={draft.colors} pattern={draft.pattern} attributes={draft.attributes} catalog={catalog} className="h-full w-full" />
       </div>
       <div>
         <p className="font-semibold">{draft.name || autoName}</p>
@@ -205,7 +205,7 @@ export default function GarmentEditorPage() {
                         className={cx('flex w-full flex-col items-center rounded-2xl border p-4 text-center hover:bg-surface-2', draft.category === c.id ? 'border-ink' : 'border-line bg-surface')}
                       >
                         <span className="mb-2 flex h-24 w-24 items-center justify-center">
-                          {first && <GarmentIllustration subcategory={first.id} colors={draft.colors} pattern={{ type: 'solid' }} catalog={catalog} className="h-full w-full" />}
+                          {first && <GarmentIllustration decorative subcategory={first.id} colors={draft.colors} pattern={{ type: 'solid' }} catalog={catalog} className="h-full w-full" />}
                         </span>
                         <span className="font-medium">{c.label}</span>
                         <span className="text-xs text-muted">{c.description}</span>
@@ -233,7 +233,7 @@ export default function GarmentEditorPage() {
                       className={cx('flex w-full flex-col items-center rounded-2xl border p-3 hover:bg-surface-2', draft.subcategory === s.id ? 'border-ink ring-1 ring-ink' : 'border-line bg-surface')}
                     >
                       <span className="mb-2 flex h-28 w-full items-center justify-center rounded-xl bg-stage p-2">
-                        <GarmentIllustration subcategory={s.id} colors={draft.colors} pattern={{ type: s.defaultPattern ?? 'solid' }} attributes={defaultAttributes(s.id, catalog)} catalog={catalog} className="h-full w-full" />
+                        <GarmentIllustration decorative subcategory={s.id} colors={draft.colors} pattern={{ type: s.defaultPattern ?? 'solid' }} attributes={defaultAttributes(s.id, catalog)} catalog={catalog} className="h-full w-full" />
                       </span>
                       <span className="text-sm font-medium">{s.label}</span>
                     </button>
@@ -350,6 +350,7 @@ export default function GarmentEditorPage() {
                       >
                         <span className="mb-1 h-12 w-12">
                           <GarmentIllustration
+      decorative
                             subcategory="tshirt"
                             colors={draft.colors.length > 1 ? draft.colors : [draft.colors[0], garmentColor('#E5D8BF', 0.35, 'secondary')]}
                             pattern={{ type: p }}

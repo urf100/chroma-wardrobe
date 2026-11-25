@@ -21,7 +21,7 @@ export function ownershipTone(o: Garment['ownership']) {
   return o === 'owned' ? 'positive' : o === 'planned' || o === 'wishlist' ? 'info' : 'neutral';
 }
 
-export function GarmentThumb({ garment, catalog, className }: { garment: Garment; catalog?: Catalog; className?: string }) {
+export function GarmentThumb({ garment, catalog, className, decorative }: { garment: Garment; catalog?: Catalog; className?: string; decorative?: boolean }) {
   return (
     <GarmentIllustration
       subcategory={garment.subcategory}
@@ -31,6 +31,7 @@ export function GarmentThumb({ garment, catalog, className }: { garment: Garment
       catalog={catalog}
       className={className}
       title={garment.name}
+      decorative={decorative}
     />
   );
 }
@@ -47,7 +48,7 @@ export function GarmentCard({ garment, onOpen, catalog, compact = false, selecte
       )}
     >
       <div className="relative flex aspect-square items-center justify-center overflow-hidden bg-stage p-3">
-        <GarmentThumb garment={garment} catalog={catalog} className="h-full w-full" />
+        <GarmentThumb decorative garment={garment} catalog={catalog} className="h-full w-full" />
         {garment.favorite && <Heart className="absolute top-2 right-2 h-4 w-4 fill-current text-ink" aria-label="Lieblingsstück" />}
       </div>
       <div className={cx('flex flex-1 flex-col gap-1.5', compact ? 'p-2' : 'p-3')}>
@@ -120,7 +121,7 @@ export function GarmentDetailModal({ garment, onClose }: { garment: Garment | nu
       <div className="grid gap-6 md:grid-cols-[240px_1fr]">
         <div className="space-y-3">
           <div className="flex aspect-square items-center justify-center rounded-2xl bg-stage p-4">
-            <GarmentThumb garment={garment} catalog={catalog} className="h-full w-full" />
+            <GarmentThumb decorative garment={garment} catalog={catalog} className="h-full w-full" />
           </div>
           {photo && <img src={photo} alt={`Foto: ${garment.name}`} className="w-full rounded-2xl object-cover" />}
         </div>

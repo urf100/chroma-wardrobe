@@ -113,7 +113,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         <ProfileSwitcher compact />
       </header>
 
-      <main id="main" className="mx-auto w-full max-w-6xl px-4 pt-6 pb-28 sm:px-6 lg:px-10 lg:pt-10 lg:pb-16" key={profile?.id}>
+      <main id="main" className="mx-auto w-full min-w-0 max-w-6xl px-4 pt-6 pb-28 sm:px-6 lg:px-10 lg:pt-10 lg:pb-16" key={profile?.id}>
         {children}
       </main>
 
