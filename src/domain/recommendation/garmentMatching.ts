@@ -98,14 +98,19 @@ export function matchGarments(
   ctx: GarmentMatchContext = {},
 ): Record<GarmentRole, GarmentMatch[]> {
   const catalog = ctx.catalog ?? DEFAULT_CATALOG;
-  const anchorRole = roleOfSlot(slotOf(anchor.subcategory, catalog));
+  const anchorSlot = slotOf(anchor.subcategory, catalog);
+  const anchorRole = roleOfSlot(anchorSlot);
   const out: Record<GarmentRole, GarmentMatch[]> = { top: [], outer: [], bottom: [], shoes: [], scarf: [], other: [] };
   for (const g of candidates) {
     if (g.id === anchor.id) continue;
     if (g.ownership === 'archived' || g.ownership === 'sold') continue;
-    const role = roleOfSlot(slotOf(g.subcategory, catalog));
-    // Gleiche Rolle nur bei Ober-/Unterschichten sinnvoll (z. B. Shirt unter Overshirt)
+    const slot = slotOf(g.subcategory, catalog);
+    const role = roleOfSlot(slot);
+    // Gleicher Slot ist nie gleichzeitig tragbar (zwei T-Shirts). Gleiche Rolle nur
+    // bei Oberteilen verschiedener Schichten (z. B. T-Shirt unter Overshirt).
+    if (slot === anchorSlot) continue;
     if (role === anchorRole && role !== 'top') continue;
+    if (role === 'top' && (slot === 'onepiece' || anchorSlot === 'onepiece')) continue;
     out[role].push({ garment: g, evaluation: evaluateGarmentPair(anchor, g, ctx) });
   }
   for (const k of Object.keys(out) as GarmentRole[]) out[k].sort((x, y) => y.evaluation.points - x.evaluation.points);

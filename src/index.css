@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+/* Dark Mode über die Klasse .dark auf <html> (manuell oder System) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Neutrale UI-Farben: bewusst ohne Farbstich, damit Kleidungsfarben
+ * nicht durch die Oberfläche verfälscht wirken.
+ */
+:root {
+  --cw-canvas: #f6f6f4;
+  --cw-surface: #ffffff;
+  --cw-surface-2: #efefec;
+  --cw-line: #e1e0dc;
+  --cw-ink: #1b1b1d;
+  --cw-muted: #64635f;
+  --cw-primary: #1f1f22;
+  --cw-primary-ink: #ffffff;
+  --cw-focus: #3b6fd8;
+  --cw-positive: #2e6b4a;
+  --cw-attention: #8a5a12;
+  --cw-danger: #a3322a;
+  --cw-stage: #e9e8e4;
+  color-scheme: light;
+}
+
+.dark {
+  --cw-canvas: #141415;
+  --cw-surface: #1d1d1f;
+  --cw-surface-2: #262628;
+  --cw-line: #333335;
+  --cw-ink: #ececea;
+  --cw-muted: #a3a29e;
+  --cw-primary: #ececea;
+  --cw-primary-ink: #141415;
+  --cw-focus: #7fa6f5;
+  --cw-positive: #7cc49b;
+  --cw-attention: #e0b264;
+  --cw-danger: #ef8b80;
+  --cw-stage: #2a2a2c;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-canvas: var(--cw-canvas);
+  --color-surface: var(--cw-surface);
+  --color-surface-2: var(--cw-surface-2);
+  --color-line: var(--cw-line);
+  --color-ink: var(--cw-ink);
+  --color-muted: var(--cw-muted);
+  --color-primary: var(--cw-primary);
+  --color-primary-ink: var(--cw-primary-ink);
+  --color-focus: var(--cw-focus);
+  --color-positive: var(--cw-positive);
+  --color-attention: var(--cw-attention);
+  --color-danger: var(--cw-danger);
+  --color-stage: var(--cw-stage);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, ui-serif, serif;
+}
+
+html,
+body {
+  background: var(--cw-canvas);
+  color: var(--cw-ink);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cw-focus);
+  outline-offset: 2px;
+}
+
+dialog::backdrop {
+  background: rgb(0 0 0 / 0.45);
+  backdrop-filter: blur(2px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cw-fade-in {
+    animation: cw-fade 220ms ease-out;
+  }
+  @keyframes cw-fade {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* Schachbrett für „transparent“/Farbvergleiche */
+.cw-checker {
+  background-image: conic-gradient(#ddd 25%, #fff 0 50%, #ddd 0 75%, #fff 0);
+  background-size: 12px 12px;
+}
+
+input[type='range'].cw-range {
+  appearance: none;
+  height: 14px;
+  border-radius: 999px;
+  border: 1px solid var(--cw-line);
+}
+input[type='range'].cw-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: #fff;
+  border: 2px solid #1b1b1d;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.3);
+  cursor: pointer;
+}
+input[type='range'].cw-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: #fff;
+  border: 2px solid #1b1b1d;
+  cursor: pointer;
+}
+
+/* Grid-Kinder dürfen schrumpfen (verhindert horizontales Scrollen auf kleinen Bildschirmen) */
+.grid > * {
+  min-width: 0;
+}
